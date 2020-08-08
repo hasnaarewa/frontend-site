@@ -1,0 +1,214 @@
+<section id="stepsregister">
+<!-- <div *ngIf="startuploading; else elseBlock" class="container">
+   <div class="loader">
+
+   </div>
+</div> -->
+<div class="container" #elseBlock>
+        <div class="columns __top _padding">
+            <div class="column ">
+                <div class="field">
+                    <p class="title is-4" *ngIf="register.step===1">
+                        Select your marketplace type
+                    </p>
+                    <p class="title is-4" *ngIf="register.step===2">
+                        fill your company details
+                    </p>
+                </div>
+            </div>
+            <div class="column is-3 " *ngIf="register.percent!==100" >
+                <progress class="progress is-warning" [value]="register.percent" max="100">{{register.percent}}</progress>
+                <span class="has-text-centered">{{register.percent}}% completed</span>
+            </div>
+        </div>
+        <div class="columns is-centered is-multiline _padding">
+
+            <div class="column is-12">
+                <div class="columns is-centered">
+
+                    <!-- step one -->
+                    <div *ngIf="register.step===1" class="column animated bounceInRight is-10 col-marketplace">
+                       <div class="columns is-multiline">
+                           <div *ngFor="let type of typesMarketplaceList " class="column is-3 market-category">
+                            <div class="card" (click)="setMarketType(type.name)"
+                        
+                            >                      
+                                <div class="card-content has-text-centered"     [ngClass]="currentConfig.type===type.name? 'is-selected':''">
+                                  <div class="content">
+                                    <img src="../../../assets/icons/{{type.img}}.svg" alt="Placeholder image">
+
+                                    <p class="title is-6">{{type.name}}</p>
+                                  </div>
+                                </div>
+                              </div>
+                           </div>
+                       
+                       </div>
+                    </div>
+                   
+                    <div *ngIf="register.step===4 && register.percent!==100" class="column animated bounceInRight is-4">
+                        <div class="field">
+
+                        </div>
+                       
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <input [(ngModel)]="currentConfig.data.email" class="input" type="email"  placeholder="ex. admin@marketplace.com">
+                                </div>
+                                <p class="help">* this field required</p>
+                            </div>
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input [(ngModel)]="currentConfig.data.password" class="input" type="password"  placeholder="ex. admin@marketplace.com">
+                                </div>
+                                <p class="help">* this field required</p>
+                            </div>
+                    </div>
+                    <div *ngIf="loading$|async" class="column animated bounceInRight is-4">
+                        <div class="field">
+
+                        </div>
+                       
+                            <div class="field">
+                                <div class="lds-roller">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <h3>wait while we prepare your marketplace</h3>
+                            </div>
+                      
+                    </div>
+                    <div *ngIf="!(loading$|async) && register.percent===100" class="column animated bounceInRight is-6 _result">
+              
+                            <div class="field _check" *ngIf="!(errors$|async)">
+
+                       <img src="../../../assets/icons/check.svg" alt="">
+                       <h3>{{(response$|async).message}} <strong>{{register.data.email}}</strong></h3>                            </div>
+                    
+                    </div>
+                    <div *ngIf="register.step===2" class="column animated bounceInRight is-4">
+                        <div class="field">
+
+                        </div>
+                       
+                            <div class="field">
+                                <label class="label">Company Name</label>
+                                <div class="control">
+                                    <input [(ngModel)]="currentConfig.data.name" class="input" type="text"  placeholder="ex. my company">
+                                </div>
+                                <p class="help">* this field required</p>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Address</label>
+                                <div class="control ">
+                                    <input [(ngModel)]="currentConfig.data.address1" class="input" type="text" placeholder="street,code"
+                                      >
+                                </div>
+                                <p class="help">* this field required</p>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">phone number</label>
+                                <div class="control ">
+                                    <input  [(ngModel)]="currentConfig.data.address2" class="input" type="text" placeholder="street,code"
+                                      >
+                                </div>
+                             
+                            </div>
+                        
+                    </div>
+                    <div *ngIf="register.step===3" class="column animated bounceInRight is-6">
+                        <div class="field">
+
+                        </div>
+                        <form [formGroup]="stepOneRegister">
+                            <div class="field">
+                                <label class="label">Company Logo</label>
+                                <!-- <div class="control">
+                                    <input class="input" type="file" formControlName="nom"  (change)="onImageChaneg($event)">
+                                </div> -->
+                                <div class="file">
+                                    <label class="file-label">
+                                      <input class="file-input" type="file" accept="image/png, image/jpeg" formControlName="nom"  (change)="onImageChaneg($event)" >
+                                      <span class="file-cta">
+                                        <span class="file-icon">
+                                          <i class="fa fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                         choose your logo
+                                        </span>
+                                        <span class="file-name">
+                                          {{imgName || ""}}
+                                          </span>
+                                      </span>
+                                    </label>
+                                  </div>
+                                <p class="help">* you must enter valide image (jpeg,jpg,png)</p>
+                            </div>
+                            <div class="picker">
+
+                            <div class="field">
+                                <label class="label">primary color</label>
+                                <div class="control ">
+                                    <a class="button btn-color" [ngStyle]="computedColor1()" (click)="setColor1Visbility()"></a>
+                                    <color-block *ngIf="iscolor1visible" (onChange)="pcikColor1($event)"></color-block>
+
+                                </div>
+                             
+                            </div>
+                            <div class="field">
+                                <label class="label">secondary color</label>
+                                <div class="control ">
+                                    <a class="button btn-color" [ngStyle]="computedColor2()" (click)="setColor2Visbility()"></a>
+                                    <color-block *ngIf="iscolor2visible" (onChange)="pcikColor2($event)"></color-block>
+
+                                </div>
+                               
+                            </div></div>
+                            <p class="help">*click to select each color</p>
+                        
+                        </form>
+                    </div>
+                </div>
+                <div  class="columns is-centered">
+                    <div class="column " [ngClass]="currentConfig.step===1? 'is-6':'is-4'">
+                        <p *ngIf="errors$ | async" class="has-text-danger" >*{{errors$ | async}}</p>
+                    </div>
+                </div>
+            </div>
+  
+            <div class="column animated bounceInRight is-offset-6" *ngIf="register.percent!==100">
+                <div class="field is-grouped">
+                    <div class="control">
+                        
+                        <button *ngIf="register.step>1" class="button  is-fullwidth" (click)="prevstep()">
+                            <span>Precedent</span>
+                            <span class="icon">
+                                <i class="fa fa-arrow-left"></i>
+                            </span>
+
+                        </button>   
+                        <button class="button is-primary is-fullwidth" (click)="nextstep()">
+                            <span>Next</span>
+                            <span class="icon">
+                                <i class="fa fa-arrow-right"></i>
+                            </span>
+
+                        </button>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

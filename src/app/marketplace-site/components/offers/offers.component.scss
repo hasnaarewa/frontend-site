@@ -1,0 +1,30 @@
+site-offers{
+    #__offers{
+        position: relative;
+        margin-top: 100px;
+        ul{
+            display: block;
+            li{
+                display: inline-block;
+                img{
+                    width: 50px;
+                    vertical-align: bottom;
+                    color:red;
+                }
+                .descr{
+                    display: inline-block;
+                    margin-left: 15px;
+                    .title{
+                        margin-bottom:0;
+                        font-weight: bold;
+
+                    }
+                    span{
+                        color:rgb(138, 138, 138);
+                    }
+
+                }
+            }
+        }
+    }
+}

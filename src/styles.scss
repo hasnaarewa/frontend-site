@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "./custom.scss";
+
+//general
+
+
+@import "sitemarkeplace.scss";
+
+@import "animate.min.css";
+//components style
+@import "app/components/marketplace-register/marketplace-register.component.scss";
+@import "app/components/header/header.component.scss";
+
+//site markeplace
+@import "app/marketplace-site/components/header/header.component.scss";
+@import "app/marketplace-site/components/footer/footer.component.scss";
+@import "app/marketplace-site/components/topheader/topheader.component.scss";
+@import "app/marketplace-site/components/middle-header/middle-header.component.scss";
+@import "app/marketplace-site/components/middle-slider/middle-slider.component.scss";
+@import "app/marketplace-site/components/latest/latest.component.scss";
+@import "app/marketplace-site/components/offers/offers.component.scss";
+@import "app/home/home.component.scss";
+
+
+// gloabl style
+.input, .textarea {
+    box-shadow: none;
+    border:1px solid #ccc;
+    &:focus{
+        border-color:transparent;
+        box-shadow: none;
+    }
+}
+
+//buttons
+.is-btn{
+    border-color:transparent;
+    border-radius: 5px;
+    color:#fff;
+}
+.is-btn-primary{
+    background-color:#F9BA48;
+}
+//colors
+.has-color-link{
+    color:#696687;
+}
+//title
+h1,h2,h3,h4,h5,h6{
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+}
+h3{
+    font-size: 3rem;
+}
+//responsive
+@media screen and (min-width: 1024px){
+.container {
+    max-width: 1406px;
+}
+
+}

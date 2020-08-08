@@ -1,0 +1,27 @@
+
+site-middle-slider{
+ #_middle-slider{
+    height:331px;
+    background-color: #f0f0f0;
+    .owl-stage{
+        height: 200px;
+    }
+ }
+    .owl-item{
+        .typo{
+            z-index: 9999;
+            position: absolute;
+            left:200px;
+            top:75px;
+            .details{
+                span{
+                    &.discount{
+                        margin-top: 15px;
+                        color:#fa4f26;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}

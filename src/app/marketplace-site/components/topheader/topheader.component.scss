@@ -1,0 +1,14 @@
+site-topheader{
+    #__topheader{
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        .navbar-item{
+            .icon{
+                margin-right: 5px;
+            }
+            .fa{
+                color:#8a8a8a;
+            }
+        }
+    }
+}

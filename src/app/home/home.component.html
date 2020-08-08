@@ -1,0 +1,16 @@
+
+
+
+<!-- <app-marketplace-register [register]="register$ | async"></app-marketplace-register> -->
+<app-header></app-header>
+<div class="modal animated fadeIn modal--register"
+[ngClass]="path==='/register'? 'is-active':''"
+>
+    <div class="modal-background"></div>
+    <div class="modal-content">
+     <app-marketplace-register></app-marketplace-register>
+    </div>
+    <a href="/" class="modal-close is-large"  aria-label="close"></a>
+  </div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

@@ -1,0 +1,48 @@
+site-middle-header{
+    #__middle-header{
+        position: relative;
+        padding: 20px 0;
+        .image{
+            width: 125px;
+            height: 60px;
+            img{
+                height: 100%;
+            }
+        }
+        .__fav{
+            .icon{
+                font-size: 2rem;
+                color:#8a8a8a;
+            }
+            ._number{
+               display:inline-block;
+                background-color: #fa4f26;
+                color:#fff;
+                border-radius: 50%;
+               width: 20px;
+               height: 20px;
+               position: relative;
+               span{
+                   line-height: 0;
+                   position: absolute;
+                   top:50%;
+                   left:40%;
+               }
+            }
+        }
+        .control{
+            .input{
+                border:2px solid #fa4f26;
+            }
+            .icon{
+                background-color:#fa4f26;
+                color:#fff;
+                pointer-events: visible;
+               &:hover{
+                cursor: pointer;
+               }
+            }
+
+        }
+    }
+}
